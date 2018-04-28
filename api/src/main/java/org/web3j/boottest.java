@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.Web3ClientVersion;
+import org.web3j.protocol.http.HttpService;
 
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ public class boottest {
     @RequestMapping("/")
     @ResponseBody
     String home() {
-        Web3j web3 = Web3j.build(new org.web3j.protocol.http.HttpService("http://192.168.1.189:8545/"));  // defaults to http://localhost:8545/
+        Web3j web3 = Web3j.build(new HttpService("http://192.168.1.189:8545/"));  // defaults to http://localhost:8545/
     Web3ClientVersion web3ClientVersion = null;
         try
     {
