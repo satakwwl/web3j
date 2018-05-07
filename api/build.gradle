@@ -36,9 +36,11 @@ jar {
 //                "Class-Path": configurations.compile.collect { it.absolutePath }.join(" ")
         )
     }
-    into('lib') {
-        from configurations.runtime
-    }
+
+    //会在生成的jar包中，把所有的依赖再次打包，而这个包是多余的，因为上面那条配置就已经打包好了所有的依赖包
+//    into('lib') {
+//        from configurations.runtime
+//    }
 }
 
 
@@ -102,5 +104,7 @@ dependencies {
     }
     compile('com.h2database:h2')
     compile project(':core')
+    compile project(':geth')
+
     deployerJars "org.apache.maven.wagon:wagon-ssh:2.2"
 }
