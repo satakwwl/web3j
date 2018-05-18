@@ -31,7 +31,7 @@ tasks.withType(JavaCompile) {
 
 jar {
     manifest {  //incubating版本，以后版本可能会改API
-        attributes("Main-Class": "org.web3j.boottest",
+        attributes("Main-Class": "org.web3j.Application",
                 "Implementation-Title": "Gradle"
 //                "Class-Path": configurations.compile.collect { it.absolutePath }.join(" ")
         )
