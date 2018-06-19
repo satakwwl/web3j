@@ -14,7 +14,6 @@ import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tx.Contract;
-import org.web3j.tx.TransactionManager;
 
 /**
  * <p>Auto generated code.
@@ -32,7 +31,7 @@ public class Arrays extends Contract {
         super(BINARY, contractAddress, web3j, credentials, gasPrice, gasLimit);
     }
 
-    protected Arrays(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    protected Arrays(String contractAddress, Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }
 
@@ -91,7 +90,7 @@ public class Arrays extends Contract {
         return deployRemoteCall(Arrays.class, web3j, credentials, gasPrice, gasLimit, BINARY, "");
     }
 
-    public static RemoteCall<Arrays> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    public static RemoteCall<Arrays> deploy(Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         return deployRemoteCall(Arrays.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, "");
     }
 
@@ -99,7 +98,7 @@ public class Arrays extends Contract {
         return new Arrays(contractAddress, web3j, credentials, gasPrice, gasLimit);
     }
 
-    public static Arrays load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    public static Arrays load(String contractAddress, Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         return new Arrays(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }
 }

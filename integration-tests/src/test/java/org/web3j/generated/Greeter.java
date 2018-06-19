@@ -13,7 +13,6 @@ import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tx.Contract;
-import org.web3j.tx.TransactionManager;
 
 /**
  * <p>Auto generated code.
@@ -31,7 +30,7 @@ public class Greeter extends Contract {
         super(BINARY, contractAddress, web3j, credentials, gasPrice, gasLimit);
     }
 
-    protected Greeter(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    protected Greeter(String contractAddress, Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }
 
@@ -55,7 +54,7 @@ public class Greeter extends Contract {
         return deployRemoteCall(Greeter.class, web3j, credentials, gasPrice, gasLimit, BINARY, encodedConstructor);
     }
 
-    public static RemoteCall<Greeter> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, String _greeting) {
+    public static RemoteCall<Greeter> deploy(Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit, String _greeting) {
         String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_greeting)));
         return deployRemoteCall(Greeter.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, encodedConstructor);
     }
@@ -64,7 +63,7 @@ public class Greeter extends Contract {
         return new Greeter(contractAddress, web3j, credentials, gasPrice, gasLimit);
     }
 
-    public static Greeter load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    public static Greeter load(String contractAddress, Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         return new Greeter(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }
 }

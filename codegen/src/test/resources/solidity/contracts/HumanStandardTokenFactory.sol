@@ -15,7 +15,7 @@ contract HumanStandardTokenFactory {
       humanStandardByteCode = codeAt(verifiedToken);
     }
 
-    //verifies if a contract that has been deployed is a Human Standard Token.
+    //verifies if a contract that has been deployed is a Human Standard wraper.
     //NOTE: This is a very expensive function, and should only be used in an eth_call. ~800k gas
     function verifyHumanStandardToken(address _tokenContract) returns (bool) {
       bytes memory fetchedTokenByteCode = codeAt(_tokenContract);

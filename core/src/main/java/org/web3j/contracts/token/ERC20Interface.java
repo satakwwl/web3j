@@ -17,7 +17,7 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
  * </p>
  *
  * @see <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md">EIPs/EIPS/eip-20-token-standard.md</a>
- * @see <a href="https://github.com/ethereum/EIPs/issues/20">ERC: Token standard #20</a>
+ * @see <a href="https://github.com/ethereum/EIPs/issues/20">ERC: wraper standard #20</a>
  */
 @SuppressWarnings("unused")
 public interface ERC20Interface<R, T> extends ERC20BasicInterface<T> {

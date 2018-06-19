@@ -91,5 +91,25 @@ public class IntegralController
 
     }
 
+    @RequestMapping(value = "unlock",
+            method = {RequestMethod.POST},
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    Response unlock(@RequestBody Map map)
+    {
+        if (!map.containsKey("account"))
+        {
+            return Result.fail("account 不能为空");
+        }
+        String account = map.get("account").toString();
+        if (!map.containsKey("passwd"))
+        {
+            return Result.fail("passwd 不能为空");
+        }
+        String passwd = map.get("passwd").toString();
+        return integralSerivce.unlockCount(account, passwd);
+
+    }
 
 }

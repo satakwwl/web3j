@@ -17,7 +17,7 @@ import static org.junit.Assert.assertTrue;
 import static org.web3j.generated.HumanStandardToken.ApprovalEventResponse;
 import static org.web3j.generated.HumanStandardToken.TransferEventResponse;
 import static org.web3j.generated.HumanStandardToken.deploy;
-import static org.web3j.tx.TransactionManager.DEFAULT_POLLING_FREQUENCY;
+import static org.web3j.tx.TransactionManagerOld.DEFAULT_POLLING_FREQUENCY;
 
 /**
  * Generated HumanStandardToken integration test for all supported scenarios.

@@ -23,7 +23,6 @@ import org.web3j.protocol.core.methods.request.EthFilter;
 import org.web3j.protocol.core.methods.response.Log;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tx.Contract;
-import org.web3j.tx.TransactionManager;
 import rx.Observable;
 import rx.functions.Func1;
 
@@ -53,7 +52,7 @@ public class HumanStandardToken extends Contract {
         super(BINARY, contractAddress, web3j, credentials, gasPrice, gasLimit);
     }
 
-    protected HumanStandardToken(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    protected HumanStandardToken(String contractAddress, Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }
 
@@ -223,7 +222,7 @@ public class HumanStandardToken extends Contract {
         return deployRemoteCall(HumanStandardToken.class, web3j, credentials, gasPrice, gasLimit, BINARY, encodedConstructor);
     }
 
-    public static RemoteCall<HumanStandardToken> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, BigInteger _initialAmount, String _tokenName, BigInteger _decimalUnits, String _tokenSymbol) {
+    public static RemoteCall<HumanStandardToken> deploy(Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit, BigInteger _initialAmount, String _tokenName, BigInteger _decimalUnits, String _tokenSymbol) {
         String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(_initialAmount), 
                 new org.web3j.abi.datatypes.Utf8String(_tokenName), 
                 new org.web3j.abi.datatypes.generated.Uint8(_decimalUnits), 
@@ -235,7 +234,7 @@ public class HumanStandardToken extends Contract {
         return new HumanStandardToken(contractAddress, web3j, credentials, gasPrice, gasLimit);
     }
 
-    public static HumanStandardToken load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    public static HumanStandardToken load(String contractAddress, Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         return new HumanStandardToken(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }
 

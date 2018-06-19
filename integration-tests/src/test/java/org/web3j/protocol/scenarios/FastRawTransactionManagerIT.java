@@ -1,5 +1,18 @@
 package org.web3j.protocol.scenarios;
 
+import com.carrotsearch.junitbenchmarks.BenchmarkRule;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TestRule;
+import org.web3j.protocol.core.RemoteCall;
+import org.web3j.protocol.core.methods.response.TransactionReceipt;
+import org.web3j.tx.FastRawTransactionManager;
+import org.web3j.tx.Transfer;
+import org.web3j.tx.response.Callback;
+import org.web3j.tx.response.PollingTransactionReceiptProcessor;
+import org.web3j.tx.response.QueuingTransactionReceiptProcessor;
+import org.web3j.utils.Convert;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Iterator;
@@ -9,20 +22,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Future;
-
-import com.carrotsearch.junitbenchmarks.BenchmarkRule;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TestRule;
-
-import org.web3j.protocol.core.RemoteCall;
-import org.web3j.protocol.core.methods.response.TransactionReceipt;
-import org.web3j.tx.FastRawTransactionManager;
-import org.web3j.tx.Transfer;
-import org.web3j.tx.response.Callback;
-import org.web3j.tx.response.PollingTransactionReceiptProcessor;
-import org.web3j.tx.response.QueuingTransactionReceiptProcessor;
-import org.web3j.utils.Convert;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;

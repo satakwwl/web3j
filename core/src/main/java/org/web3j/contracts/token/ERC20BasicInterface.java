@@ -16,7 +16,7 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
  *     from their token as the generic type "T".
  * </p>
  *
- * @see <a href="https://github.com/ethereum/EIPs/issues/179">ERC: Simpler Token Standard #179</a>
+ * @see <a href="https://github.com/ethereum/EIPs/issues/179">ERC: Simpler wraper Standard #179</a>
  * @see <a href="https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/token/ERC20Basic.sol">OpenZeppelin's zeppelin-solidity reference implementation</a>
  */
 @SuppressWarnings("unused")

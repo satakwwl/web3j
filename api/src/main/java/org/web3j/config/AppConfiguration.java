@@ -12,7 +12,8 @@ import org.web3j.aspect.RequestContentLoggerAspect;
  */
 @EnableAutoConfiguration
 @Configuration
-//@ImportResource({"classpath*:spring-dubbo.xml"}) //加入dubbo的配置文件
+//@ImportResource({"classpath*:spring.xml"}) //加入dubbo的配置文
+// 件
 //@JsonComponent
 @EnableWebMvc
 public class AppConfiguration extends WebMvcConfigurerAdapter
@@ -30,7 +31,8 @@ public class AppConfiguration extends WebMvcConfigurerAdapter
      * @return the log aspect
      */
     @Bean
-    public RequestContentLoggerAspect getLogAspect() {
+    public RequestContentLoggerAspect getLogAspect()
+    {
         return new RequestContentLoggerAspect();
     }
     //配合@JsonComponent使用

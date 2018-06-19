@@ -19,4 +19,6 @@ public interface IntegralSerivce
 
     Response getBalance(String account);
 
+    Response unlockCount(String account,String passwd);
+
 }

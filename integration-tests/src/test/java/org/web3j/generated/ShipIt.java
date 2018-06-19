@@ -17,7 +17,6 @@ import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.RemoteCall;
 import org.web3j.tuples.generated.Tuple8;
 import org.web3j.tx.Contract;
-import org.web3j.tx.TransactionManager;
 
 /**
  * <p>Auto generated code.
@@ -35,7 +34,7 @@ public class ShipIt extends Contract {
         super(BINARY, contractAddress, web3j, credentials, gasPrice, gasLimit);
     }
 
-    protected ShipIt(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    protected ShipIt(String contractAddress, Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }
 
@@ -65,7 +64,7 @@ public class ShipIt extends Contract {
         return deployRemoteCall(ShipIt.class, web3j, credentials, gasPrice, gasLimit, BINARY, "");
     }
 
-    public static RemoteCall<ShipIt> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    public static RemoteCall<ShipIt> deploy(Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         return deployRemoteCall(ShipIt.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, "");
     }
 
@@ -73,7 +72,7 @@ public class ShipIt extends Contract {
         return new ShipIt(contractAddress, web3j, credentials, gasPrice, gasLimit);
     }
 
-    public static ShipIt load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    public static ShipIt load(String contractAddress, Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         return new ShipIt(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }
 }

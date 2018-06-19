@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableAutoConfiguration
 @SpringBootApplication
+//@ImportResource({"classpath*:spring.xml"}) //加入spring的配置文件
 public class Application
 {
     public static void main(String[] args) throws Exception

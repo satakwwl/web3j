@@ -19,7 +19,6 @@ import org.web3j.protocol.core.methods.request.EthFilter;
 import org.web3j.protocol.core.methods.response.Log;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tx.Contract;
-import org.web3j.tx.TransactionManager;
 import rx.Observable;
 import rx.functions.Func1;
 
@@ -44,7 +43,7 @@ public class Fibonacci extends Contract {
         super(BINARY, contractAddress, web3j, credentials, gasPrice, gasLimit);
     }
 
-    protected Fibonacci(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    protected Fibonacci(String contractAddress, Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }
 
@@ -100,7 +99,7 @@ public class Fibonacci extends Contract {
         return deployRemoteCall(Fibonacci.class, web3j, credentials, gasPrice, gasLimit, BINARY, "");
     }
 
-    public static RemoteCall<Fibonacci> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    public static RemoteCall<Fibonacci> deploy(Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         return deployRemoteCall(Fibonacci.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, "");
     }
 
@@ -108,7 +107,7 @@ public class Fibonacci extends Contract {
         return new Fibonacci(contractAddress, web3j, credentials, gasPrice, gasLimit);
     }
 
-    public static Fibonacci load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+    public static Fibonacci load(String contractAddress, Web3j web3j, TransactionManagerOld transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         return new Fibonacci(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }
 

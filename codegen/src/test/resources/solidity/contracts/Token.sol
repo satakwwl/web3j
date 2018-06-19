@@ -1,6 +1,6 @@
 pragma solidity ^0.4.2;
 
-// Abstract contract for the full ERC 20 Token standard
+// Abstract contract for the full ERC 20 wraper standard
 // https://github.com/ethereum/EIPs/issues/20
 
 contract Token {
