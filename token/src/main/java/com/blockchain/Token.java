@@ -5,8 +5,8 @@ import com.blockchain.response.Response;
 import com.blockchain.response.Result;
 import com.blockchain.wraper.TokenERC20;
 import org.web3j.crypto.Credentials;
+import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
-import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.geth.Geth;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.Contract;
@@ -24,6 +24,7 @@ public class Token
     private String url;
     private String contractAddress;
 
+
     private Web3j web3 = null;
     private Geth geth = null;
     private TokenERC20 tokenERC20 = null;
@@ -38,13 +39,24 @@ public class Token
             tokenERC20 = TokenERC20.load(contractAddress, web3, Credentials.create(privateKey), GAS_PRICE, Contract.GAS_LIMIT);
     }
 
+    public Token(String url)
+    {
+        if (web3 == null)
+            web3 = Web3j.build(new HttpService(url));  // defaults to http://localhost:8545/
+        if (geth == null)
+            geth = Geth.build(new HttpService(url));
+    }
+
     public Response newAccount(String passwd)
     {
         try
         {
-            org.web3j.protocol.core.Response<String> response = geth.personalNewAccount(passwd).send();
-            String account = response.getResult();
-            return Result.resultSet(account);
+//            org.web3j.protocol.core.Response<String> response = geth.personalNewAccount(passwd).send();
+            Object o = geth.personalNewAccount(passwd).send();
+//            String account = response.getResult();
+//            return Result.resultSet(account);
+            return Result.resultSet("hell");
+
         } catch (Exception e)
         {
             return Result.fail(e.toString());
@@ -55,7 +67,10 @@ public class Token
     {
         try
         {
-            TransactionReceipt response = tokenERC20.transfer(account, new BigInteger(bigNum)).send();
+//            TransactionReceipt response = tokenERC20.transfer(account, new BigInteger(bigNum)).send();
+            System.out.println("start transfer");
+            tokenERC20.transfer(account, new BigInteger(bigNum)).send();
+            System.out.println("end transfer");
             return Result.success();
         } catch (Exception e)
         {
@@ -90,4 +105,19 @@ public class Token
             return Result.fail(e.toString());
         }
     }
+
+    private Credentials getRcredentials(String passWd, String user)
+    {
+        try
+        {
+            Credentials credentials = WalletUtils.loadCredentials(passWd, "/path/to/walletfile/" + user);
+            return credentials;
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
 }
