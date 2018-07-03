@@ -1,94 +1,105 @@
-package com.blockchain;
+package org.web3j.service;
 
-
-import com.blockchain.response.Response;
-import com.blockchain.response.Result;
-import com.blockchain.wraper.TokenERC20;
+import common.response.Response;
+import common.response.Result;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Service;
 import org.web3j.crypto.Credentials;
-import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.geth.Geth;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.Contract;
+import org.web3j.wraper.TokenERC20;
 
 import java.math.BigInteger;
 
 /**
- * Created by tangjc on 2018/6/6.
+ * Created by tangjc on 2018/5/17.
  */
-public class Token
+@Service
+@Configuration
+@PropertySource("classpath:config.properties")
+public class TokenServiceImp implements TokenSerivce
 {
+    private final Logger logger = LogManager.getLogger(getClass());
     static final BigInteger GAS = BigInteger.valueOf(30_000);
     static final BigInteger GAS_PRICE = BigInteger.valueOf(20_000_000_000L);
-//    private String privateKey;
-//    private String url;
-//    private String contractAddress;
+    @Value("${web3j.privateKey}")
+    private String privateKey;
+    @Value("${web3j.gethUrl}")
+    private String url;
+    @Value("${web3j.contractTokenAddress}")
+    private String contractAddress;
 
-    private Web3j web3;
-    private TokenERC20 tokenERC20;
+    private Web3j web3 = null;
     private Geth geth = Geth.build(new HttpService());
+    private TokenERC20 tokenERC20 = null;
 
-    public Token(String url, String privateKey, String contractAddress)
+    private void initGeth() throws Exception
     {
-        web3 = Web3j.build(new HttpService(url));  // defaults to http://localhost:8545/
-        tokenERC20 = TokenERC20.load(contractAddress, web3, Credentials.create(privateKey), GAS_PRICE, Contract.GAS_LIMIT);
+        if (web3 == null)
+            web3 = Web3j.build(new HttpService(url));  // defaults to http://localhost:8545/
+        if (tokenERC20 == null)
+            tokenERC20 = TokenERC20.load(contractAddress, web3, Credentials.create(privateKey), GAS_PRICE, Contract.GAS_LIMIT);
     }
 
-
-    public Token(String url, String passwd, String walletFile, String contractAddress)
-    {
-        web3 = Web3j.build(new HttpService(url));  // defaults to http://localhost:8545/
-        Credentials credentials = getCredentials(passwd, walletFile);
-        tokenERC20 = TokenERC20.load(contractAddress, web3, credentials, GAS_PRICE, Contract.GAS_LIMIT);
-    }
-
+    @Override
     public Response newAccount(String passwd)
     {
         try
         {
+            initGeth();
             org.web3j.protocol.core.Response<String> response = geth.personalNewAccount(passwd).send();
             String account = response.getResult();
             return Result.resultSet(account);
-
         } catch (Exception e)
         {
+            logger.error(e, e);
             return Result.fail(e.toString());
         }
     }
 
+    @Override
     public Response transfer(String account, String bigNum)
     {
         try
         {
+            initGeth();
             TransactionReceipt response = tokenERC20.transfer(account, new BigInteger(bigNum)).send();
-            System.out.println("start transfer");
-            tokenERC20.transfer(account, new BigInteger(bigNum)).send();
-            System.out.println("end transfer");
             return Result.resultSet(response.getTransactionHash());
         } catch (Exception e)
         {
+            logger.error(e, e);
             return Result.fail(e.toString());
         }
     }
 
-
+    @Override
     public Response getBalance(String account)
     {
         try
         {
+            initGeth();
             BigInteger balance = tokenERC20.balanceOf(account).send();
             return Result.resultSet(balance);
         } catch (Exception e)
         {
+            logger.error(e, e);
             return Result.fail(e.toString());
         }
     }
 
+    @Override
     public Response unlockCount(String account, String passwd)
     {
         try
         {
+            initGeth();
             org.web3j.protocol.core.Response<Boolean> response = geth.personalUnlockAccount(account, passwd).send();
             if (response.getError() != null && response.getError().getCode() != 0)
                 return Result.fail("密码错误");
@@ -96,22 +107,8 @@ public class Token
 
         } catch (Exception e)
         {
+            logger.error(e, e);
             return Result.fail(e.toString());
         }
     }
-
-    private Credentials getCredentials(String passWd, String walletFile)
-    {
-        try
-        {
-            Credentials credentials = WalletUtils.loadCredentials(passWd, walletFile);
-            return credentials;
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-            return null;
-        }
-
-    }
-
 }

@@ -1,23 +1,20 @@
 package org.web3j.protocol.scenarios;
 
+import org.junit.Test;
+import org.web3j.generated.HumanStandardToken;
+import org.web3j.protocol.core.DefaultBlockParameterName;
+import org.web3j.protocol.core.methods.response.TransactionReceipt;
+import rx.Subscription;
+
 import java.math.BigInteger;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Test;
-import rx.Subscription;
-
-import org.web3j.generated.HumanStandardToken;
-import org.web3j.protocol.core.DefaultBlockParameterName;
-import org.web3j.protocol.core.methods.response.TransactionReceipt;
-
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import static org.web3j.generated.HumanStandardToken.ApprovalEventResponse;
-import static org.web3j.generated.HumanStandardToken.TransferEventResponse;
-import static org.web3j.generated.HumanStandardToken.deploy;
-import static org.web3j.tx.TransactionManagerOld.DEFAULT_POLLING_FREQUENCY;
+import static org.web3j.generated.HumanStandardToken.*;
+import static org.web3j.tx.TransactionManager.DEFAULT_POLLING_FREQUENCY;
 
 /**
  * Generated HumanStandardToken integration test for all supported scenarios.

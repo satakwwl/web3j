@@ -11,9 +11,12 @@ public class Main
     {
 
         //private chain
-        /*
-        Token token = new Token("http://127.0.0.1:8545", "7611d1c4df61ddf46049d3598c87deb0a414a5d10c5a7390fbc83157b94e0b43", "0x0146b83d18cf048a925ff3df58e2065937a072c0");
-        String fromAccount = "0x5ffb51ed47e3e763bc70918ecdad52ce0b742ea5";
+
+//        Token token = new Token("http://127.0.0.1:8545", "7611d1c4df61ddf46049d3598c87deb0a414a5d10c5a7390fbc83157b94e0b43", "0x0146b83d18cf048a925ff3df58e2065937a072c0");
+//        String fromAccount = "0x5ffb51ed47e3e763bc70918ecdad52ce0b742ea5";
+//        String toAccount = "0x0581a3f433705d9b4e0577996995461159bed8ba";
+        Token token = new Token("http://192.168.1.189:8545", "s", "F:\\src\\UTC--2018-04-08T01-17-57.020931661Z--fd82fb0496801ea202382d4a314f9be25becb01f", "0xe62e5261ec41258dbce53c954ea01f540208eb5f");
+        String fromAccount = "0xfd82fb0496801ea202382d4a314f9be25becb01f";
         String toAccount = "0x0581a3f433705d9b4e0577996995461159bed8ba";
         Response newAccountRs = token.newAccount("s");
         if (newAccountRs.getCode() == 0)
@@ -36,10 +39,9 @@ public class Main
         else
             System.out.println("get balance error:" + balanceRs.getMsg());
 
-            */
 
         //public chain
-
+       /*
         String url = "https://ropsten.infura.io/VRHOSLVjB65cmIB5Xusp";
         String mainNetUrl = "https://mainnet.infura.io/VRHOSLVjB65cmIB5Xusp";
         Token token = new Token(url);
@@ -66,6 +68,7 @@ public class Main
 //            System.out.println("new account address: " + newAccountRs.getResult());
 //        else
 //            System.out.println("create new account error:" + newAccountRs.getMsg());
+*/
     }
 
 }
