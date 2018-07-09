@@ -1,0 +1,1733 @@
+{
+  "contractName": "User",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "string"
+        }
+      ],
+      "name": "setEvent",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "string"
+        },
+        {
+          "name": "_pro",
+          "type": "string"
+        },
+        {
+          "name": "_value",
+          "type": "string"
+        }
+      ],
+      "name": "set",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "string"
+        },
+        {
+          "name": "_pro",
+          "type": "string"
+        }
+      ],
+      "name": "get",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b6104528061001e6000396000f30060606040526004361061004b5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416633e10510b8114610050578063da465d74146100f1575b600080fd5b341561005b57600080fd5b61007a6024600480358281019290820135918135918201910135610129565b60405160208082528190810183818151815260200191508051906020019080838360005b838110156100b657808201518382015260200161009e565b50505050905090810190601f1680156100e35780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34156100fc57600080fd5b6101276024600480358281019290820135918135808301929082013591604435918201910135610224565b005b610131610379565b600080868660405180838380828437820191505092505050908152602001604051809103902060010184846040518083838082843782019150509250505090815260200160405180910390209050808054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102145780601f106101e957610100808354040283529160200191610214565b820191906000526020600020905b8154815290600101906020018083116101f757829003601f168201915b5050505050915050949350505050565b7fdabb8ae608e4e175e2e2619d0daeb5b4a9c62fa3e08058737d862eba72efa67f600087876040518083838082843782019150509250505090815260200160405180910390206001018585604051808383808284378201915050925050509081526020016040518091039020604051602080825282546002600019610100600184161502019091160490820181905281906040820190849080156103095780601f106102de57610100808354040283529160200191610309565b820191906000526020600020905b8154815290600101906020018083116102ec57829003601f168201915b50509250505060405180910390a181816000888860405180838380828437820191505092505050908152602001604051809103902060010186866040518083838082843782019150509250505090815260200160405190819003902061037092909161038b565b50505050505050565b60206040519081016040526000815290565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106103cc5782800160ff198235161785556103f9565b828001600101855582156103f9579182015b828111156103f95782358255916020019190600101906103de565b50610405929150610409565b5090565b61042391905b80821115610405576000815560010161040f565b905600a165627a7a72305820826304233980421d7f824892fd6c18e8044933c0a16791fc86761398b8b70b140029",
+  "deployedBytecode": "0x60606040526004361061004b5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416633e10510b8114610050578063da465d74146100f1575b600080fd5b341561005b57600080fd5b61007a6024600480358281019290820135918135918201910135610129565b60405160208082528190810183818151815260200191508051906020019080838360005b838110156100b657808201518382015260200161009e565b50505050905090810190601f1680156100e35780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34156100fc57600080fd5b6101276024600480358281019290820135918135808301929082013591604435918201910135610224565b005b610131610379565b600080868660405180838380828437820191505092505050908152602001604051809103902060010184846040518083838082843782019150509250505090815260200160405180910390209050808054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102145780601f106101e957610100808354040283529160200191610214565b820191906000526020600020905b8154815290600101906020018083116101f757829003601f168201915b5050505050915050949350505050565b7fdabb8ae608e4e175e2e2619d0daeb5b4a9c62fa3e08058737d862eba72efa67f600087876040518083838082843782019150509250505090815260200160405180910390206001018585604051808383808284378201915050925050509081526020016040518091039020604051602080825282546002600019610100600184161502019091160490820181905281906040820190849080156103095780601f106102de57610100808354040283529160200191610309565b820191906000526020600020905b8154815290600101906020018083116102ec57829003601f168201915b50509250505060405180910390a181816000888860405180838380828437820191505092505050908152602001604051809103902060010186866040518083838082843782019150509250505090815260200160405190819003902061037092909161038b565b50505050505050565b60206040519081016040526000815290565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106103cc5782800160ff198235161785556103f9565b828001600101855582156103f9579182015b828111156103f95782358255916020019190600101906103de565b50610405929150610409565b5090565b61042391905b80821115610405576000815560010161040f565b905600a165627a7a72305820826304233980421d7f824892fd6c18e8044933c0a16791fc86761398b8b70b140029",
+  "sourceMap": "27:618:3:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "27:618:3:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;411:157;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;411:157:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;233:170;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;411:157;478:6;;:::i;:::-;497:10;510:7;518:5;;510:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:23;;534:4;;510:29;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;497:42;;557:3;550:10;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;411:157;;;;;;;:::o;233:170::-;307:39;316:7;324:5;;316:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:23;;340:4;;316:29;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;307:39;;;;;;;;;-1:-1:-1;;307:39:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;389:6;;357:7;365:5;;357:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:23;;381:4;;357:29;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:38;;:29;;:38;:::i;:::-;;233:170;;;;;;:::o;27:618::-;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;27:618:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;27:618:3;;;-1:-1:-1;27:618:3;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.4;\r\n\r\ncontract User {\r\n    struct userInfo\r\n    {\r\n        bool create;\r\n        mapping (string => string) property;\r\n    }\r\n\r\n    mapping (string => userInfo) userMap;\r\n\r\n    event setEvent(string value);\r\n    function set(string _user, string _pro, string _value) external{\r\n        setEvent(userMap[_user].property[_pro]);\r\n        userMap[_user].property[_pro] = _value;\r\n    }\r\n\r\n    function get(string _user, string _pro) constant external returns (string) {\r\n        string val = userMap[_user].property[_pro];\r\n        return val;\r\n    }\r\n    //function getProperty(string pro) public returns (string){\r\n\r\n//}\r\n\r\n}\r\n",
+  "sourcePath": "/mnt/hgfs/src/web3j/tokenAPi/src/main/solidity/contracts/User.sol",
+  "ast": {
+    "absolutePath": "/mnt/hgfs/src/web3j/tokenAPi/src/main/solidity/contracts/User.sol",
+    "exportedSymbols": {
+      "User": [
+        1146
+      ]
+    },
+    "id": 1147,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1081,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:3"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1146,
+        "linearizedBaseContracts": [
+          1146
+        ],
+        "name": "User",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "User.userInfo",
+            "id": 1088,
+            "members": [
+              {
+                "constant": false,
+                "id": 1083,
+                "name": "create",
+                "nodeType": "VariableDeclaration",
+                "scope": 1088,
+                "src": "80:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1082,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "80:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1087,
+                "name": "property",
+                "nodeType": "VariableDeclaration",
+                "scope": 1088,
+                "src": "102:35:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_string_memory_$_t_string_storage_$",
+                  "typeString": "mapping(string memory => string storage ref)"
+                },
+                "typeName": {
+                  "id": 1086,
+                  "keyType": {
+                    "id": 1084,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "111:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "102:26:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_string_memory_$_t_string_storage_$",
+                    "typeString": "mapping(string memory => string storage ref)"
+                  },
+                  "valueType": {
+                    "id": 1085,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "121:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "userInfo",
+            "nodeType": "StructDefinition",
+            "scope": 1146,
+            "src": "48:97:3",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 1092,
+            "name": "userMap",
+            "nodeType": "VariableDeclaration",
+            "scope": 1146,
+            "src": "153:36:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_userInfo_$1088_storage_$",
+              "typeString": "mapping(string memory => struct User.userInfo storage ref)"
+            },
+            "typeName": {
+              "id": 1091,
+              "keyType": {
+                "id": 1089,
+                "name": "string",
+                "nodeType": "ElementaryTypeName",
+                "src": "162:6:3",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string storage pointer"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "153:28:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_userInfo_$1088_storage_$",
+                "typeString": "mapping(string memory => struct User.userInfo storage ref)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 1090,
+                "name": "userInfo",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 1088,
+                "src": "172:8:3",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_userInfo_$1088_storage_ptr",
+                  "typeString": "struct User.userInfo storage pointer"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 1096,
+            "name": "setEvent",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1095,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1094,
+                  "indexed": false,
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1096,
+                  "src": "213:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string memory"
+                  },
+                  "typeName": {
+                    "id": 1093,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "213:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "212:14:3"
+            },
+            "src": "198:29:3"
+          },
+          {
+            "body": {
+              "id": 1123,
+              "nodeType": "Block",
+              "src": "296:107:3",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "id": 1106,
+                              "name": "userMap",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1092,
+                              "src": "316:7:3",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_userInfo_$1088_storage_$",
+                                "typeString": "mapping(string memory => struct User.userInfo storage ref)"
+                              }
+                            },
+                            "id": 1108,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 1107,
+                              "name": "_user",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1098,
+                              "src": "324:5:3",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_string_calldata_ptr",
+                                "typeString": "string calldata"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "316:14:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_userInfo_$1088_storage",
+                              "typeString": "struct User.userInfo storage ref"
+                            }
+                          },
+                          "id": 1109,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "property",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1087,
+                          "src": "316:23:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_string_memory_$_t_string_storage_$",
+                            "typeString": "mapping(string memory => string storage ref)"
+                          }
+                        },
+                        "id": 1111,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 1110,
+                          "name": "_pro",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1100,
+                          "src": "340:4:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_calldata_ptr",
+                            "typeString": "string calldata"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "316:29:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_storage",
+                          "typeString": "string storage ref"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_string_storage",
+                          "typeString": "string storage ref"
+                        }
+                      ],
+                      "id": 1105,
+                      "name": "setEvent",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1096,
+                      "src": "307:8:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (string memory)"
+                      }
+                    },
+                    "id": 1112,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "307:39:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1113,
+                  "nodeType": "ExpressionStatement",
+                  "src": "307:39:3"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1121,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 1114,
+                            "name": "userMap",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1092,
+                            "src": "357:7:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_userInfo_$1088_storage_$",
+                              "typeString": "mapping(string memory => struct User.userInfo storage ref)"
+                            }
+                          },
+                          "id": 1116,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 1115,
+                            "name": "_user",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1098,
+                            "src": "365:5:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_calldata_ptr",
+                              "typeString": "string calldata"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "357:14:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_userInfo_$1088_storage",
+                            "typeString": "struct User.userInfo storage ref"
+                          }
+                        },
+                        "id": 1117,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "property",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1087,
+                        "src": "357:23:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_string_memory_$_t_string_storage_$",
+                          "typeString": "mapping(string memory => string storage ref)"
+                        }
+                      },
+                      "id": 1119,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 1118,
+                        "name": "_pro",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1100,
+                        "src": "381:4:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_calldata_ptr",
+                          "typeString": "string calldata"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "357:29:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1120,
+                      "name": "_value",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1102,
+                      "src": "389:6:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_calldata_ptr",
+                        "typeString": "string calldata"
+                      }
+                    },
+                    "src": "357:38:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 1122,
+                  "nodeType": "ExpressionStatement",
+                  "src": "357:38:3"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1124,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "set",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1103,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1098,
+                  "name": "_user",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1124,
+                  "src": "246:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string calldata"
+                  },
+                  "typeName": {
+                    "id": 1097,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "246:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1100,
+                  "name": "_pro",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1124,
+                  "src": "260:11:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string calldata"
+                  },
+                  "typeName": {
+                    "id": 1099,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "260:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1102,
+                  "name": "_value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1124,
+                  "src": "273:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string calldata"
+                  },
+                  "typeName": {
+                    "id": 1101,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "273:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "245:42:3"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1104,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "296:0:3"
+            },
+            "scope": 1146,
+            "src": "233:170:3",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1144,
+              "nodeType": "Block",
+              "src": "486:82:3",
+              "statements": [
+                {
+                  "assignments": [
+                    1134
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1134,
+                      "name": "val",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1145,
+                      "src": "497:10:3",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage_ptr",
+                        "typeString": "string storage pointer"
+                      },
+                      "typeName": {
+                        "id": 1133,
+                        "name": "string",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "497:6:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_storage_ptr",
+                          "typeString": "string storage pointer"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1141,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1135,
+                          "name": "userMap",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1092,
+                          "src": "510:7:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_userInfo_$1088_storage_$",
+                            "typeString": "mapping(string memory => struct User.userInfo storage ref)"
+                          }
+                        },
+                        "id": 1137,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 1136,
+                          "name": "_user",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1126,
+                          "src": "518:5:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_calldata_ptr",
+                            "typeString": "string calldata"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "510:14:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_userInfo_$1088_storage",
+                          "typeString": "struct User.userInfo storage ref"
+                        }
+                      },
+                      "id": 1138,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "property",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1087,
+                      "src": "510:23:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_string_memory_$_t_string_storage_$",
+                        "typeString": "mapping(string memory => string storage ref)"
+                      }
+                    },
+                    "id": 1140,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 1139,
+                      "name": "_pro",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1128,
+                      "src": "534:4:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_calldata_ptr",
+                        "typeString": "string calldata"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "510:29:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "497:42:3"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1142,
+                    "name": "val",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1134,
+                    "src": "557:3:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "functionReturnParameters": 1132,
+                  "id": 1143,
+                  "nodeType": "Return",
+                  "src": "550:10:3"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1145,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "get",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1129,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1126,
+                  "name": "_user",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1145,
+                  "src": "424:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string calldata"
+                  },
+                  "typeName": {
+                    "id": 1125,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "424:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1128,
+                  "name": "_pro",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1145,
+                  "src": "438:11:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string calldata"
+                  },
+                  "typeName": {
+                    "id": 1127,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "438:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "423:27:3"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1132,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1131,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1145,
+                  "src": "478:6:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string memory"
+                  },
+                  "typeName": {
+                    "id": 1130,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "478:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "477:8:3"
+            },
+            "scope": 1146,
+            "src": "411:157:3",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1147,
+        "src": "27:618:3"
+      }
+    ],
+    "src": "0:647:3"
+  },
+  "legacyAST": {
+    "absolutePath": "/mnt/hgfs/src/web3j/tokenAPi/src/main/solidity/contracts/User.sol",
+    "exportedSymbols": {
+      "User": [
+        1146
+      ]
+    },
+    "id": 1147,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1081,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:3"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1146,
+        "linearizedBaseContracts": [
+          1146
+        ],
+        "name": "User",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "User.userInfo",
+            "id": 1088,
+            "members": [
+              {
+                "constant": false,
+                "id": 1083,
+                "name": "create",
+                "nodeType": "VariableDeclaration",
+                "scope": 1088,
+                "src": "80:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1082,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "80:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1087,
+                "name": "property",
+                "nodeType": "VariableDeclaration",
+                "scope": 1088,
+                "src": "102:35:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_string_memory_$_t_string_storage_$",
+                  "typeString": "mapping(string memory => string storage ref)"
+                },
+                "typeName": {
+                  "id": 1086,
+                  "keyType": {
+                    "id": 1084,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "111:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "102:26:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_string_memory_$_t_string_storage_$",
+                    "typeString": "mapping(string memory => string storage ref)"
+                  },
+                  "valueType": {
+                    "id": 1085,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "121:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "userInfo",
+            "nodeType": "StructDefinition",
+            "scope": 1146,
+            "src": "48:97:3",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 1092,
+            "name": "userMap",
+            "nodeType": "VariableDeclaration",
+            "scope": 1146,
+            "src": "153:36:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_userInfo_$1088_storage_$",
+              "typeString": "mapping(string memory => struct User.userInfo storage ref)"
+            },
+            "typeName": {
+              "id": 1091,
+              "keyType": {
+                "id": 1089,
+                "name": "string",
+                "nodeType": "ElementaryTypeName",
+                "src": "162:6:3",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string storage pointer"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "153:28:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_userInfo_$1088_storage_$",
+                "typeString": "mapping(string memory => struct User.userInfo storage ref)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 1090,
+                "name": "userInfo",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 1088,
+                "src": "172:8:3",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_userInfo_$1088_storage_ptr",
+                  "typeString": "struct User.userInfo storage pointer"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 1096,
+            "name": "setEvent",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1095,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1094,
+                  "indexed": false,
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1096,
+                  "src": "213:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string memory"
+                  },
+                  "typeName": {
+                    "id": 1093,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "213:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "212:14:3"
+            },
+            "src": "198:29:3"
+          },
+          {
+            "body": {
+              "id": 1123,
+              "nodeType": "Block",
+              "src": "296:107:3",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "id": 1106,
+                              "name": "userMap",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1092,
+                              "src": "316:7:3",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_userInfo_$1088_storage_$",
+                                "typeString": "mapping(string memory => struct User.userInfo storage ref)"
+                              }
+                            },
+                            "id": 1108,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 1107,
+                              "name": "_user",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1098,
+                              "src": "324:5:3",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_string_calldata_ptr",
+                                "typeString": "string calldata"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "316:14:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_userInfo_$1088_storage",
+                              "typeString": "struct User.userInfo storage ref"
+                            }
+                          },
+                          "id": 1109,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "property",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1087,
+                          "src": "316:23:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_string_memory_$_t_string_storage_$",
+                            "typeString": "mapping(string memory => string storage ref)"
+                          }
+                        },
+                        "id": 1111,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 1110,
+                          "name": "_pro",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1100,
+                          "src": "340:4:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_calldata_ptr",
+                            "typeString": "string calldata"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "316:29:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_storage",
+                          "typeString": "string storage ref"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_string_storage",
+                          "typeString": "string storage ref"
+                        }
+                      ],
+                      "id": 1105,
+                      "name": "setEvent",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1096,
+                      "src": "307:8:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (string memory)"
+                      }
+                    },
+                    "id": 1112,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "307:39:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1113,
+                  "nodeType": "ExpressionStatement",
+                  "src": "307:39:3"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1121,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 1114,
+                            "name": "userMap",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1092,
+                            "src": "357:7:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_userInfo_$1088_storage_$",
+                              "typeString": "mapping(string memory => struct User.userInfo storage ref)"
+                            }
+                          },
+                          "id": 1116,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 1115,
+                            "name": "_user",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1098,
+                            "src": "365:5:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_calldata_ptr",
+                              "typeString": "string calldata"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "357:14:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_userInfo_$1088_storage",
+                            "typeString": "struct User.userInfo storage ref"
+                          }
+                        },
+                        "id": 1117,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "property",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1087,
+                        "src": "357:23:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_string_memory_$_t_string_storage_$",
+                          "typeString": "mapping(string memory => string storage ref)"
+                        }
+                      },
+                      "id": 1119,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 1118,
+                        "name": "_pro",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1100,
+                        "src": "381:4:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_calldata_ptr",
+                          "typeString": "string calldata"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "357:29:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1120,
+                      "name": "_value",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1102,
+                      "src": "389:6:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_calldata_ptr",
+                        "typeString": "string calldata"
+                      }
+                    },
+                    "src": "357:38:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 1122,
+                  "nodeType": "ExpressionStatement",
+                  "src": "357:38:3"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1124,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "set",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1103,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1098,
+                  "name": "_user",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1124,
+                  "src": "246:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string calldata"
+                  },
+                  "typeName": {
+                    "id": 1097,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "246:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1100,
+                  "name": "_pro",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1124,
+                  "src": "260:11:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string calldata"
+                  },
+                  "typeName": {
+                    "id": 1099,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "260:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1102,
+                  "name": "_value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1124,
+                  "src": "273:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string calldata"
+                  },
+                  "typeName": {
+                    "id": 1101,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "273:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "245:42:3"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1104,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "296:0:3"
+            },
+            "scope": 1146,
+            "src": "233:170:3",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1144,
+              "nodeType": "Block",
+              "src": "486:82:3",
+              "statements": [
+                {
+                  "assignments": [
+                    1134
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1134,
+                      "name": "val",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1145,
+                      "src": "497:10:3",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage_ptr",
+                        "typeString": "string storage pointer"
+                      },
+                      "typeName": {
+                        "id": 1133,
+                        "name": "string",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "497:6:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_storage_ptr",
+                          "typeString": "string storage pointer"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1141,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1135,
+                          "name": "userMap",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1092,
+                          "src": "510:7:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_userInfo_$1088_storage_$",
+                            "typeString": "mapping(string memory => struct User.userInfo storage ref)"
+                          }
+                        },
+                        "id": 1137,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 1136,
+                          "name": "_user",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1126,
+                          "src": "518:5:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_calldata_ptr",
+                            "typeString": "string calldata"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "510:14:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_userInfo_$1088_storage",
+                          "typeString": "struct User.userInfo storage ref"
+                        }
+                      },
+                      "id": 1138,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "property",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1087,
+                      "src": "510:23:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_string_memory_$_t_string_storage_$",
+                        "typeString": "mapping(string memory => string storage ref)"
+                      }
+                    },
+                    "id": 1140,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 1139,
+                      "name": "_pro",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1128,
+                      "src": "534:4:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_calldata_ptr",
+                        "typeString": "string calldata"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "510:29:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "497:42:3"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1142,
+                    "name": "val",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1134,
+                    "src": "557:3:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "functionReturnParameters": 1132,
+                  "id": 1143,
+                  "nodeType": "Return",
+                  "src": "550:10:3"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1145,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "get",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1129,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1126,
+                  "name": "_user",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1145,
+                  "src": "424:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string calldata"
+                  },
+                  "typeName": {
+                    "id": 1125,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "424:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1128,
+                  "name": "_pro",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1145,
+                  "src": "438:11:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string calldata"
+                  },
+                  "typeName": {
+                    "id": 1127,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "438:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "423:27:3"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1132,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1131,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1145,
+                  "src": "478:6:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string memory"
+                  },
+                  "typeName": {
+                    "id": 1130,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "478:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "477:8:3"
+            },
+            "scope": 1146,
+            "src": "411:157:3",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1147,
+        "src": "27:618:3"
+      }
+    ],
+    "src": "0:647:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.21+commit.dfe3193c.Emscripten.clang"
+  },
+  "networks": {
+    "5678": {
+      "events": {
+        "0xdabb8ae608e4e175e2e2619d0daeb5b4a9c62fa3e08058737d862eba72efa67f": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "value",
+              "type": "string"
+            }
+          ],
+          "name": "setEvent",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x66a7edd10fb8a17056d2828191e8ae93a1e34d70",
+      "updated_at": 1516354401994
+    }
+  },
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-07-06T07:53:48.291Z"
+}

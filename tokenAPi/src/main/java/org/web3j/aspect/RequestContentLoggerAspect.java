@@ -48,7 +48,7 @@ public class RequestContentLoggerAspect
 
         // 记录下请求内容
 //        logger.info("URL : " + request.getRequestURL().toString());
-        logger.info("\nUrl: " + request.getRequestURI() + ", request: " + JSON.toJSONString(joinPoint.getArgs()));
+        logger.info("\nUrl: " + request.getRequestURI() + ", request: "+ JSON.toJSONString(joinPoint.getArgs()));
 //        logger.info("HTTP_METHOD : " + request.getMethod());
 //        logger.info("IP : " + request.getRemoteAddr());
 //        logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());

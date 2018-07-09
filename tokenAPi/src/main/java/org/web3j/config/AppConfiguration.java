@@ -4,8 +4,10 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.web3j.aspect.RequestContentLoggerAspect;
+import org.web3j.interceptor.RequestInterceptor;
 
 /**
  * Created by Dayong on 16/9/15.
@@ -18,12 +20,12 @@ import org.web3j.aspect.RequestContentLoggerAspect;
 @EnableWebMvc
 public class AppConfiguration extends WebMvcConfigurerAdapter
 {
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        //注册拦截器
-//        registry.addInterceptor(new RequestInterceptor());
-//        super.addInterceptors(registry);
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        //注册拦截器
+        registry.addInterceptor(new RequestInterceptor());
+        super.addInterceptors(registry);
+    }
 
     /**
      * Config request logger aspect

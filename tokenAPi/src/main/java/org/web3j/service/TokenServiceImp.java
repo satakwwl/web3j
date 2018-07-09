@@ -14,7 +14,7 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.geth.Geth;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.Contract;
-import org.web3j.wraper.TokenERC20;
+import org.web3j.wraper.MyAdvancedToken;
 
 import java.math.BigInteger;
 
@@ -23,7 +23,7 @@ import java.math.BigInteger;
  */
 @Service
 @Configuration
-@PropertySource("classpath:config.properties")
+@PropertySource("classpath:application.properties")
 public class TokenServiceImp implements TokenSerivce
 {
     private final Logger logger = LogManager.getLogger(getClass());
@@ -38,14 +38,14 @@ public class TokenServiceImp implements TokenSerivce
 
     private Web3j web3 = null;
     private Geth geth = Geth.build(new HttpService());
-    private TokenERC20 tokenERC20 = null;
+    private MyAdvancedToken tokenERC20 = null;
 
     private void initGeth() throws Exception
     {
         if (web3 == null)
             web3 = Web3j.build(new HttpService(url));  // defaults to http://localhost:8545/
         if (tokenERC20 == null)
-            tokenERC20 = TokenERC20.load(contractAddress, web3, Credentials.create(privateKey), GAS_PRICE, Contract.GAS_LIMIT);
+            tokenERC20 = MyAdvancedToken.load(contractAddress, web3, Credentials.create(privateKey), GAS_PRICE, Contract.GAS_LIMIT);
     }
 
     @Override

@@ -48,8 +48,10 @@ public class TokenController
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
+    //Response balance(@RequestBody Map map,HttpServletRequest request)
     Response balance(@RequestBody Map map)
     {
+//        String token = request.getParameter("token");
         if (!map.containsKey("account"))
         {
             return Result.fail("account 不能为空");
