@@ -26,6 +26,7 @@ import org.web3j.wraper.MyAdvancedToken;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -157,6 +158,7 @@ public class TokenServiceImp implements TokenSerivce
             {
                 logger.error(e, e);
                 msg = e.toString();
+                msg =  URLEncoder.encode(msg);
                 code = 1;
             } finally
             {
