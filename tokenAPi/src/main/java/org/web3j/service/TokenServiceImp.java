@@ -2,6 +2,14 @@ package org.web3j.service;
 
 import common.response.Response;
 import common.response.Result;
+import org.apache.http.HttpEntity;
+import org.apache.http.NameValuePair;
+import org.apache.http.ParseException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +24,11 @@ import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.Contract;
 import org.web3j.wraper.MyAdvancedToken;
 
+import java.io.IOException;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by tangjc on 2018/5/17.
@@ -70,8 +82,11 @@ public class TokenServiceImp implements TokenSerivce
         try
         {
             initGeth();
-            TransactionReceipt response = tokenERC20.transfer(account, new BigInteger(bigNum)).send();
-            return Result.resultSet(response.getTransactionHash());
+            String id = UUID.randomUUID().toString();
+            Threads worker = new Threads(id, account, bigNum);
+            Thread thread = new Thread(worker);
+            thread.start();
+            return Result.resultSet(id);
         } catch (Exception e)
         {
             logger.error(e, e);
@@ -110,5 +125,87 @@ public class TokenServiceImp implements TokenSerivce
             logger.error(e, e);
             return Result.fail(e.toString());
         }
+    }
+
+    class Threads implements Runnable
+    {
+        private String id;
+        private String account;
+        private String bigNum;
+
+        public Threads(String id, String account, String bigNum)
+        {
+            this.id = id;
+            this.account = account;
+            this.bigNum = bigNum;
+        }
+
+        @Override
+        public void run()
+        {
+            String transHash = "";
+            String msg = "转账成功";
+            int code = 0;
+            try
+            {
+                logger.info(id + " start transfer account:" + account + ",value:" + bigNum);
+                TransactionReceipt response = tokenERC20.transfer(account, new BigInteger(bigNum)).send();
+                transHash = response.getTransactionHash();
+                logger.info(id + " end transfer account:" + account + ",value:" + bigNum + "transHash:" + transHash);
+
+            } catch (Exception e)
+            {
+                logger.error(e, e);
+                msg = e.toString();
+                code = 1;
+            } finally
+            {
+                String url = String.format("http://rpj520.com/index.php/tyy/health/notify?code=%s&msg=%s&result=%s&transHash=%s", code, msg, id, transHash);
+                try
+                {
+                    sendGet(url);
+                } catch (IOException e)
+                {
+                    logger.error(e, e);
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
+
+
+    private String sendGet(String url) throws ParseException, IOException
+    {
+        // 创建默认的httpClient实例.
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        // 创建HttpGet
+        HttpGet httpGet = new HttpGet(url);
+        // 创建参数队列
+        List<NameValuePair> formparams = new ArrayList<NameValuePair>();
+
+        CloseableHttpResponse response = httpclient.execute(httpGet);
+        try
+        {
+            HttpEntity entity = response.getEntity();
+            if (entity != null)
+            {
+                String result= EntityUtils.toString(entity, "UTF-8");
+                logger.info(String.format("url:%s,response:%s", url, result));
+                return result;
+            }
+        } finally
+        {
+            response.close();
+            // 关闭连接,释放资源
+            try
+            {
+                httpclient.close();
+            } catch (IOException e)
+            {
+                logger.error(e.getMessage());
+            }
+        }
+        return null;
     }
 }
