@@ -73,37 +73,31 @@ public class RawTransactionManager extends TransactionManager
         this(web3j, credentials, ChainId.NONE, attempts, sleepDuration);
     }
 
-    protected synchronized  BigInteger getNonce() throws IOException
+    protected synchronized BigInteger getNonce() throws IOException
     {
         BigInteger bigNonce;
         NonceHandle nonceHandle = new NonceHandle();
+        EthGetTransactionCount ethGetTransactionCount = web3j.ethGetTransactionCount(
+                credentials.getAddress(), DefaultBlockParameterName.PENDING).send();
+        bigNonce = ethGetTransactionCount.getTransactionCount();
+        int intNonce = bigNonce.intValue();
         try
         {
             nonceHandle.conncet();
             int nonce = nonceHandle.getNonce(credentials.getAddress());
-            if (nonce != 0)
+            if (nonce >= intNonce)
             {
-                nonceHandle.saveNonce(credentials.getAddress(), nonce+1);
+                nonceHandle.saveNonce(credentials.getAddress(), nonce + 1);
                 bigNonce = BigInteger.valueOf(nonce + 1);
             } else
             {
-                EthGetTransactionCount ethGetTransactionCount = web3j.ethGetTransactionCount(
-                        credentials.getAddress(), DefaultBlockParameterName.PENDING).send();
-                bigNonce = ethGetTransactionCount.getTransactionCount();
-                nonceHandle.saveNonce(credentials.getAddress(), bigNonce.intValue());
-
+                nonceHandle.saveNonce(credentials.getAddress(), intNonce);
             }
             nonceHandle.close();
         } catch (ClassNotFoundException e)
         {
-            EthGetTransactionCount ethGetTransactionCount = web3j.ethGetTransactionCount(
-                    credentials.getAddress(), DefaultBlockParameterName.PENDING).send();
-            bigNonce = ethGetTransactionCount.getTransactionCount();
         } catch (SQLException s)
         {
-            EthGetTransactionCount ethGetTransactionCount = web3j.ethGetTransactionCount(
-                    credentials.getAddress(), DefaultBlockParameterName.PENDING).send();
-            bigNonce = ethGetTransactionCount.getTransactionCount();
         }
 
         return bigNonce;
