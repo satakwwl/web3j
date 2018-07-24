@@ -1,8 +1,5 @@
 package org.web3j.tx;
 
-import java.io.IOException;
-import java.math.BigInteger;
-
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.RawTransaction;
 import org.web3j.crypto.TransactionEncoder;
@@ -13,21 +10,27 @@ import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.tx.response.TransactionReceiptProcessor;
 import org.web3j.utils.Numeric;
 
+import java.io.IOException;
+import java.math.BigInteger;
+import java.sql.SQLException;
+
 /**
  * TransactionManager implementation using Ethereum wallet file to create and sign transactions
  * locally.
- *
+ * <p>
  * <p>This transaction manager provides support for specifying the chain id for transactions as per
  * <a href="https://github.com/ethereum/EIPs/issues/155">EIP155</a>.
  */
-public class RawTransactionManager extends TransactionManager {
+public class RawTransactionManager extends TransactionManager
+{
 
     private final Web3j web3j;
     final Credentials credentials;
 
     private final byte chainId;
 
-    public RawTransactionManager(Web3j web3j, Credentials credentials, byte chainId) {
+    public RawTransactionManager(Web3j web3j, Credentials credentials, byte chainId)
+    {
         super(web3j, credentials.getAddress());
 
         this.web3j = web3j;
@@ -38,7 +41,8 @@ public class RawTransactionManager extends TransactionManager {
 
     public RawTransactionManager(
             Web3j web3j, Credentials credentials, byte chainId,
-            TransactionReceiptProcessor transactionReceiptProcessor) {
+            TransactionReceiptProcessor transactionReceiptProcessor)
+    {
         super(transactionReceiptProcessor, credentials.getAddress());
 
         this.web3j = web3j;
@@ -48,7 +52,8 @@ public class RawTransactionManager extends TransactionManager {
     }
 
     public RawTransactionManager(
-            Web3j web3j, Credentials credentials, byte chainId, int attempts, long sleepDuration) {
+            Web3j web3j, Credentials credentials, byte chainId, int attempts, long sleepDuration)
+    {
         super(web3j, attempts, sleepDuration, credentials.getAddress());
 
         this.web3j = web3j;
@@ -57,26 +62,58 @@ public class RawTransactionManager extends TransactionManager {
         this.chainId = chainId;
     }
 
-    public RawTransactionManager(Web3j web3j, Credentials credentials) {
+    public RawTransactionManager(Web3j web3j, Credentials credentials)
+    {
         this(web3j, credentials, ChainId.NONE);
     }
 
     public RawTransactionManager(
-            Web3j web3j, Credentials credentials, int attempts, int sleepDuration) {
+            Web3j web3j, Credentials credentials, int attempts, int sleepDuration)
+    {
         this(web3j, credentials, ChainId.NONE, attempts, sleepDuration);
     }
 
-    protected BigInteger getNonce() throws IOException {
-        EthGetTransactionCount ethGetTransactionCount = web3j.ethGetTransactionCount(
-                credentials.getAddress(), DefaultBlockParameterName.PENDING).send();
+    protected synchronized  BigInteger getNonce() throws IOException
+    {
+        BigInteger bigNonce;
+        NonceHandle nonceHandle = new NonceHandle();
+        try
+        {
+            nonceHandle.conncet();
+            int nonce = nonceHandle.getNonce(credentials.getAddress());
+            if (nonce != 0)
+            {
+                nonceHandle.saveNonce(credentials.getAddress(), nonce+1);
+                bigNonce = BigInteger.valueOf(nonce + 1);
+            } else
+            {
+                EthGetTransactionCount ethGetTransactionCount = web3j.ethGetTransactionCount(
+                        credentials.getAddress(), DefaultBlockParameterName.PENDING).send();
+                bigNonce = ethGetTransactionCount.getTransactionCount();
+                nonceHandle.saveNonce(credentials.getAddress(), bigNonce.intValue());
 
-        return ethGetTransactionCount.getTransactionCount();
+            }
+            nonceHandle.close();
+        } catch (ClassNotFoundException e)
+        {
+            EthGetTransactionCount ethGetTransactionCount = web3j.ethGetTransactionCount(
+                    credentials.getAddress(), DefaultBlockParameterName.PENDING).send();
+            bigNonce = ethGetTransactionCount.getTransactionCount();
+        } catch (SQLException s)
+        {
+            EthGetTransactionCount ethGetTransactionCount = web3j.ethGetTransactionCount(
+                    credentials.getAddress(), DefaultBlockParameterName.PENDING).send();
+            bigNonce = ethGetTransactionCount.getTransactionCount();
+        }
+
+        return bigNonce;
     }
 
     @Override
     public EthSendTransaction sendTransaction(
             BigInteger gasPrice, BigInteger gasLimit, String to,
-            String data, BigInteger value) throws IOException {
+            String data, BigInteger value) throws IOException
+    {
 
         BigInteger nonce = getNonce();
 
@@ -92,13 +129,16 @@ public class RawTransactionManager extends TransactionManager {
     }
 
     public EthSendTransaction signAndSend(RawTransaction rawTransaction)
-            throws IOException {
+            throws IOException
+    {
 
         byte[] signedMessage;
 
-        if (chainId > ChainId.NONE) {
+        if (chainId > ChainId.NONE)
+        {
             signedMessage = TransactionEncoder.signMessage(rawTransaction, chainId, credentials);
-        } else {
+        } else
+        {
             signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);
         }
 
