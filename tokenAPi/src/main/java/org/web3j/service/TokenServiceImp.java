@@ -2,6 +2,7 @@ package org.web3j.service;
 
 import common.response.Response;
 import common.response.Result;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
@@ -22,6 +23,7 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.geth.Geth;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.Contract;
+import org.web3j.tx.NonceHandle;
 import org.web3j.wraper.MyAdvancedToken;
 
 import java.io.IOException;
@@ -34,7 +36,7 @@ import java.util.UUID;
 /**
  * Created by tangjc on 2018/5/17.
  */
-@Service
+@Service("tokenSerivce")
 @Configuration
 @PropertySource("classpath:application.properties")
 public class TokenServiceImp implements TokenSerivce
@@ -70,6 +72,51 @@ public class TokenServiceImp implements TokenSerivce
             org.web3j.protocol.core.Response<String> response = geth.personalNewAccount(passwd).send();
             String account = response.getResult();
             return Result.resultSet(account);
+        } catch (Exception e)
+        {
+            logger.error(e, e);
+            return Result.fail(e.toString());
+        }
+    }
+
+    @Override
+    public Response getKey(String appKey, String appSecret)
+    {
+        try
+        {
+            String sha1Str = DigestUtils.sha1Hex("I'm " + appKey + "king");
+            if (!sha1Str.equals(appSecret))
+            {
+                return Result.fail("无效的appKey或appSecret!");
+            }
+            NonceHandle nonceHandle = new NonceHandle();
+            nonceHandle.conncet();
+            if (!nonceHandle.verifyAppKey(appKey, appSecret))
+                return Result.fail("无效的appKey或appSecret!");
+            String key = nonceHandle.genKey(appKey);
+            nonceHandle.close();
+            return Result.resultSet(key);
+        } catch (Exception e)
+        {
+            logger.error(e, e);
+            return Result.fail(e.toString());
+        }
+    }
+
+    @Override
+    public Response verifyKey(String key)
+    {
+        try
+        {
+
+            NonceHandle nonceHandle = new NonceHandle();
+            nonceHandle.conncet();
+            boolean isValid = nonceHandle.verifyKey(key);
+            nonceHandle.close();
+            if (isValid)
+                return Result.resultSet(key);
+            else
+                return Result.fail("无效的key!");
         } catch (Exception e)
         {
             logger.error(e, e);
@@ -158,7 +205,7 @@ public class TokenServiceImp implements TokenSerivce
             {
                 logger.error(e, e);
                 msg = e.toString();
-                msg =  URLEncoder.encode(msg);
+                msg = URLEncoder.encode(msg);
                 code = 1;
             } finally
             {
@@ -192,7 +239,7 @@ public class TokenServiceImp implements TokenSerivce
             HttpEntity entity = response.getEntity();
             if (entity != null)
             {
-                String result= EntityUtils.toString(entity, "UTF-8");
+                String result = EntityUtils.toString(entity, "UTF-8");
                 logger.info(String.format("url:%s,response:%s", url, result));
                 return result;
             }

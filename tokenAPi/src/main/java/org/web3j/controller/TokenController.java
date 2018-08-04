@@ -23,6 +23,26 @@ public class TokenController
     @Autowired
     private TokenSerivce tokenSerivce;
 
+    @RequestMapping(value = "getKey",
+            method = {RequestMethod.POST},
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    Response getKey(@RequestBody Map map)
+    {
+        if (!map.containsKey("appKey"))
+        {
+            return Result.fail("appKey 不能为空");
+        }
+        String appKey = map.get("appKey").toString();
+        if (!map.containsKey("appSecret"))
+        {
+            return Result.fail("appSecret不能为空");
+        }
+        String appSecret = map.get("appSecret").toString();
+        return tokenSerivce.getKey(appKey, appSecret);
+    }
+
     @RequestMapping(value = "transfer",
             method = {RequestMethod.POST},
             consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -48,7 +68,7 @@ public class TokenController
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    //Response balance(@RequestBody Map map,HttpServletRequest request)
+        //Response balance(@RequestBody Map map,HttpServletRequest request)
     Response balance(@RequestBody Map map)
     {
 //        String token = request.getParameter("token");

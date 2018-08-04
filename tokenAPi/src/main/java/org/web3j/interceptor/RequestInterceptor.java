@@ -1,12 +1,17 @@
 package org.web3j.interceptor;
 
 import com.alibaba.fastjson.JSON;
+import common.response.Response;
 import common.response.Result;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.web3j.service.TokenSerivce;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,13 +29,24 @@ public class RequestInterceptor implements HandlerInterceptor
      * logger
      */
     private final Logger logger = LogManager.getLogger(getClass());
+    @Autowired
+    private TokenSerivce tokenSerivce;
 
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception
     {
+        if (tokenSerivce == null) {
+            //解决service为null无法注入问题
+            BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
+            tokenSerivce = (TokenSerivce) factory.getBean("tokenSerivce");
+        }
+        if (request.getRequestURI().equals("/token/getKey"))
+            return true;
         String key = request.getParameter("key");
-        if (key == null || !key.equals("VRHOSLVjB65cmIB5Xusp"))
+        Response result = tokenSerivce.verifyKey(key);
+        if (result.getCode() != 0)
+//            if (key == null || !key.equals("VRHOSLVjB65cmIB5Xusp"))
         {
 
             write(response, "key 非法！");
@@ -51,21 +67,29 @@ public class RequestInterceptor implements HandlerInterceptor
 
     }
 
-    private void write(HttpServletResponse response, String content) {
+    private void write(HttpServletResponse response, String content)
+    {
         response.setContentType("application/json;charset=UTF-8");
         Writer writer = null;
-        try {
+        try
+        {
             writer = response.getWriter();
             writer.write(JSON.toJSONString(Result.error(content)));
             writer.flush();
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             logger.error(e.getMessage());
-        } finally {
-            try {
+        } finally
+        {
+            try
+            {
                 writer.close();
-            } catch (IOException e) {
+            } catch (IOException e)
+            {
                 logger.error(e.getMessage());
             }
         }
     }
+
+
 }

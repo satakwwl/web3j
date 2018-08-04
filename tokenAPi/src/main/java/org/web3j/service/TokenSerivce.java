@@ -13,6 +13,11 @@ public interface TokenSerivce
      */
     Response newAccount(String passwd);
 
+    Response getKey(String appKey, String appSecret);
+
+    Response verifyKey(String key);
+
+
     Response transfer(String account, String bigNum);
 
     Response getBalance(String account);

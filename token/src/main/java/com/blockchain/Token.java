@@ -3,7 +3,7 @@ package com.blockchain;
 
 import com.blockchain.response.Response;
 import com.blockchain.response.Result;
-import com.blockchain.wraper.TokenERC20;
+import com.blockchain.wraper.MyAdvancedToken;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
@@ -13,6 +13,8 @@ import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.Contract;
 
 import java.math.BigInteger;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by tangjc on 2018/6/6.
@@ -26,13 +28,13 @@ public class Token
 //    private String contractAddress;
 
     private Web3j web3;
-    private TokenERC20 tokenERC20;
+    private MyAdvancedToken tokenERC20;
     private Geth geth = Geth.build(new HttpService());
 
     public Token(String url, String privateKey, String contractAddress)
     {
         web3 = Web3j.build(new HttpService(url));  // defaults to http://localhost:8545/
-        tokenERC20 = TokenERC20.load(contractAddress, web3, Credentials.create(privateKey), GAS_PRICE, Contract.GAS_LIMIT);
+        tokenERC20 = MyAdvancedToken.load(contractAddress, web3, Credentials.create(privateKey), GAS_PRICE, Contract.GAS_LIMIT);
     }
 
 
@@ -40,7 +42,7 @@ public class Token
     {
         web3 = Web3j.build(new HttpService(url));  // defaults to http://localhost:8545/
         Credentials credentials = getCredentials(passwd, walletFile);
-        tokenERC20 = TokenERC20.load(contractAddress, web3, credentials, GAS_PRICE, Contract.GAS_LIMIT);
+        tokenERC20 = MyAdvancedToken.load(contractAddress, web3, credentials, GAS_PRICE, Contract.GAS_LIMIT);
     }
 
     public Response newAccount(String passwd)
@@ -61,10 +63,13 @@ public class Token
     {
         try
         {
+            Date date = new Date();
+            String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+            System.out.println(time + " start transfer");
             TransactionReceipt response = tokenERC20.transfer(account, new BigInteger(bigNum)).send();
-            System.out.println("start transfer");
-            tokenERC20.transfer(account, new BigInteger(bigNum)).send();
-            System.out.println("end transfer");
+            date = new Date();
+            time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+            System.out.println(time + " end transfer");
             return Result.resultSet(response.getTransactionHash());
         } catch (Exception e)
         {
@@ -112,6 +117,17 @@ public class Token
             return null;
         }
 
+    }
+    public Response recylce(String account, String bigNum)
+    {
+        try
+        {
+            TransactionReceipt response = tokenERC20.recycle(account, new BigInteger(bigNum)).send();
+            return Result.resultSet(response.getTransactionHash());
+        } catch (Exception e)
+        {
+            return Result.fail(e.toString());
+        }
     }
 
 }
