@@ -92,7 +92,10 @@ public class TokenServiceImp implements TokenSerivce
             NonceHandle nonceHandle = new NonceHandle();
             nonceHandle.conncet();
             if (!nonceHandle.verifyAppKey(appKey, appSecret))
+            {
+                nonceHandle.close();
                 return Result.fail("无效的appKey或appSecret!");
+            }
             String key = nonceHandle.genKey(appKey);
             nonceHandle.close();
             return Result.resultSet(key);
