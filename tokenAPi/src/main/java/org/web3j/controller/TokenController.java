@@ -87,12 +87,13 @@ public class TokenController
     @ResponseBody
     Response newAccount(@RequestBody Map map)
     {
-        if (!map.containsKey("passwd"))
-        {
-            return Result.fail("passwd不能为空");
-        }
-        String passwd = map.get("passwd").toString();
-        return tokenSerivce.newAccount(passwd);
+        //密码硬编码，方便以后批量导出私钥
+//        if (!map.containsKey("passwd"))
+//        {
+//            return Result.fail("passwd不能为空");
+//        }
+//        String passwd = map.get("passwd").toString();
+        return tokenSerivce.newAccount("s");
     }
 
 
