@@ -178,6 +178,27 @@ public class TokenServiceImp implements TokenSerivce
         }
     }
 
+    @Override
+    public Response getTransactionDetailByHash(String hash)
+    {
+        try
+        {
+            initGeth();
+            org.web3j.protocol.core.Response response = web3.ethGetTransactionByHash(hash).send();
+            if (response.getError() != null && response.getError().getCode() != 0)
+            {
+                return Result.fail("记录不存在");
+            }
+            return Result.resultSet(response.getResult());
+
+        } catch (Exception e)
+        {
+            logger.error(e, e);
+            return Result.fail(e.toString());
+        }
+
+    }
+
     class Threads implements Runnable
     {
         private String id;

@@ -118,4 +118,21 @@ public class TokenController
 
     }
 
+
+    @RequestMapping(value = "getBlockChainTransaction",
+            method = {RequestMethod.POST},
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+        //Response balance(@RequestBody Map map,HttpServletRequest request)
+    Response getBlockChainTransaction(@RequestBody Map map)
+    {
+//        String token = request.getParameter("token");
+        if (!map.containsKey("transHash"))
+        {
+            return Result.fail("transHash 不能为空");
+        }
+        String transHash = map.get("transHash").toString();
+        return tokenSerivce.getTransactionDetailByHash(transHash);
+    }
 }

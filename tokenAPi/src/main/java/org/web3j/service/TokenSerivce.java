@@ -24,4 +24,6 @@ public interface TokenSerivce
 
     Response unlockCount(String account, String passwd);
 
+    Response getTransactionDetailByHash(String hash);
+
 }
