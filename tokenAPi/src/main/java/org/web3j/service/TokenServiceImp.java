@@ -17,8 +17,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.web3j.abi.TypeDecoder;
+import org.web3j.abi.datatypes.Address;
+import org.web3j.abi.datatypes.generated.Uint256;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.methods.response.Transaction;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.geth.Geth;
 import org.web3j.protocol.http.HttpService;
@@ -27,6 +31,7 @@ import org.web3j.tx.NonceHandle;
 import org.web3j.wraper.MyAdvancedToken;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -184,11 +189,24 @@ public class TokenServiceImp implements TokenSerivce
         try
         {
             initGeth();
-            org.web3j.protocol.core.Response response = web3.ethGetTransactionByHash(hash).send();
+            org.web3j.protocol.core.Response<Transaction> response = web3.ethGetTransactionByHash(hash).send();
             if (response.getError() != null && response.getError().getCode() != 0)
             {
                 return Result.fail("记录不存在");
             }
+            String input = response.getResult().getInput();
+            String to = input.substring(10, 74);
+            String value = input.substring(74);
+            Method refMethod = TypeDecoder.class.getDeclaredMethod("decode", String.class, int.class, Class.class);
+            refMethod.setAccessible(true);
+            Address address = (Address) refMethod.invoke(null, to, 0, Address.class);
+//            System.out.println(address.toString());
+            response.getResult().setTo(address.toString());
+            Uint256 amount = (Uint256) refMethod.invoke(null, value, 0, Uint256.class);
+            BigInteger bigInteger = amount.getValue();
+//            if (bigInteger.compareTo(BigInteger.valueOf(0)) > 0)
+//                bigInteger = amount.getValue().divide(BigInteger.valueOf(100000));
+            response.getResult().setRpj(bigInteger.toString());
             return Result.resultSet(response.getResult());
 
         } catch (Exception e)
