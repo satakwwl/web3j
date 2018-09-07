@@ -55,6 +55,9 @@ public class TokenServiceImp implements TokenSerivce
     private String url;
     @Value("${web3j.contractTokenAddress}")
     private String contractAddress;
+    @Value("${callback}")
+    private String callback;
+
 
     private Web3j web3 = null;
     private Geth geth = Geth.build(new HttpService());
@@ -251,7 +254,7 @@ public class TokenServiceImp implements TokenSerivce
                 code = 1;
             } finally
             {
-                String url = String.format("http://rpj520.com/index.php/tyy/health/notify?code=%s&msg=%s&result=%s&transHash=%s", code, msg, id, transHash);
+                String url = String.format(callback, code, msg, id, transHash);
                 try
                 {
                     sendGet(url);
