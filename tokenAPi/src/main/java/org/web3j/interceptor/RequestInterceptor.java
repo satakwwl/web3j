@@ -49,7 +49,7 @@ public class RequestInterceptor implements HandlerInterceptor
 //            if (key == null || !key.equals("VRHOSLVjB65cmIB5Xusp"))
         {
 
-            write(response, "key 非法！");
+            write(response, "key 无效！");
             return false;
         }
         return true;
